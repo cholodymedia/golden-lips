@@ -42,9 +42,9 @@ export default {
         event.preventDefault();
             axios({
                 method: 'post',
-                url: 'http://localhost:5000/topic/send',
+                url: 'http:/golden-lips-server.herokuapp.com/topic/send',
                 data: {
-                    SECRET_KEY: "GOLDEN_LIPS",
+                    
                     topic: this.topic
                 }
             });
