@@ -42,7 +42,7 @@ export default {
         event.preventDefault();
             axios({
                 method: 'post',
-                url: 'http://localhost:5000/topic/add',
+                url: 'http://localhost:5000/topic/send',
                 data: {
                     SECRET_KEY: "GOLDEN_LIPS",
                     topic: this.topic
