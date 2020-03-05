@@ -1,17 +1,17 @@
 <template>
   <div class="container">
-    <div class="banner" v-bind:style="{ backgroundImage: 'url(' + image + ')' }">
-      <div class="top">
-        <div class="title">
-          Złote usta
-        </div>
-        <div class="description">
-          Konkurs krasomówczy na Wiśniowej
+    <div class="banner">
+      <div class="left">
+        <div class="box">
+          <div class="top">
+            <div class="link">Wiśniowa</div>
+            <div class="link">Kontakt</div>
+          </div>
+          <div class="middle"></div>
         </div>
       </div>
-      <div class="bottom">
-        <p>Biblioteka szkolna zachęca do wzięcia udziału w igrzyskach na mikrofony,</p> 
-        <p>gdzie zwycięzca może być tylko jeden! </p>
+      <div class="right">
+        <img :src="image" alt="logo">
       </div>
     </div>
 
@@ -21,9 +21,7 @@
         <question title="Kto organizuje?" text="Organizatorami konkursu są: Sylwia Błażejewska oraz Beata Walczak"/>  
         <question title="Kto może wziąć udział?" text="W konkursie mogą wziać udział wszyscy uczniowie z naszej szkoły"/>  
         <question title="Czy będą jakieś nagrody?" text="Zobaczymy"/>  
-        <question title="Gdzie szukać więcej informacji?" text="Na tej stronie będą zamieszczane wszelkie niezbędne informacje dla zainteresowanych. Jeśli jednak wolisz bardziej werbalne środki przekazu, to panie z biblioteki mogą udzielić takich informacji"/>  
-
-
+        <question title="Gdzie szukać więcej informacji?" text="Na tej stronie będą zamieszczane wszelkie niezbędne informacje dla zainteresowanych. Jeśli jednak wolisz bardziej werbalne środki przekazu, to panie z biblioteki mogą udzielić takich informacji"/>
       </div>
     </div>
 
@@ -31,7 +29,7 @@
 </template>
 
 <script>
-import image from '@/assets/1.jpg';
+import image from '@/assets/logo.png';
 import question from '@/components/Question';
 
 export default {
@@ -57,36 +55,37 @@ export default {
     color: #e3dac9c0;
     overflow-x: hidden;
 
-    .banner{
+    .banner {
       width: 100%;
       height: 100vh;
       display: flex;
-      flex-direction: column;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
+      flex-direction: row;
+      background-color: white;
 
-      .top{
-        width: 100%;
+      .left {
+        flex: 3;
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
-        height: 20vh;
+        justify-content: center;
 
-        .title{
-          font-size: 5.5rem;
-          color: rgb(235, 181, 33);
-          text-transform: uppercase;
-          padding-top: 5rem;
-          font-weight: 900;
+        .box {
+          width: 75%;
+          height: 80%;
         }
-        .description{
-          font-size: 2rem;
-          color: white;
-          text-transform: uppercase;
-          padding-top: 1.5rem;
+      }
+
+      .right {
+        flex: 2.5;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        img {
+          width: 28rem;
         }
+      }
+      
       }
       .bottom{
         width: 100%;
@@ -105,7 +104,6 @@ export default {
           padding: 0.2rem;
         }
       }
-    }
     .info{
       background-color: #1E000E;
       min-height: 100vh;
