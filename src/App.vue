@@ -26,9 +26,12 @@ export default {
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,500,600&display=swap');
+
 body, html {
   margin: 0;
   padding: 0;
+  font-family: Lato;
 }
 
 #app {

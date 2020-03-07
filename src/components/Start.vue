@@ -7,7 +7,14 @@
             <div class="link">Wiśniowa</div>
             <div class="link">Kontakt</div>
           </div>
-          <div class="middle"></div>
+          <div class="middle">
+            <div class="title">ZŁOTE USTA</div>
+            <div class="subtitle">KONKURS RECYTATORSKI NA WIŚNIOWEJ</div>
+            <div class="info-text">BILIOTEKA SZKOLNA ZACHĘCA DO WZIĘCIA UDZIAŁU W IGRZYSKACH NA MIKOROFONY, GDZIE ZWYCIEZCA MOŻE BYĆ TYLKO JEDEN.</div>
+            <div class="button-box">
+              <button>więcej</button>
+            </div>
+          </div>
         </div>
       </div>
       <div class="right">
@@ -46,14 +53,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
   .container{
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-direction: column;
     font-family: 'Lato', sans-serif;
     color: #e3dac9c0;
-    overflow-x: hidden;
 
     .banner {
       width: 100%;
@@ -61,17 +66,127 @@ export default {
       display: flex;
       flex-direction: row;
       background-color: white;
+      z-index: 1;
 
       .left {
-        flex: 3;
+        flex: 3.5;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
 
         .box {
-          width: 75%;
-          height: 80%;
+          width: 38rem;
+          height: 85%;
+          display: flex;
+          flex-direction: column;
+
+          .top {
+            width: 100%;
+            height: 4rem;
+            display: flex;
+            flex-direction: row;
+
+            .link {
+              width: 12rem;
+              height: 100%;
+              display: flex;
+              align-items: center;
+              color: black;
+              font-weight: 200;
+              font-size: 1.4rem;
+            }
+          }
+
+          .middle {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            .title {
+              width: 100%;
+              height: 6rem;
+              font-size: 5rem;
+              font-weight: 900;
+              color: #1E000E;
+            }
+            .subtitle {
+              width: 100%;
+              height: 5rem;
+              display: flex;
+              font-size: 1.45rem;
+              font-weight: 500;
+              color: black; 
+              align-items: center;
+              z-index: 1;
+              &::before {
+                content: '';
+                width: 7.7rem;
+                height: 1.2rem;
+                background-color: #DDAB40;
+                position: absolute;
+                z-index: -1;
+                transform: translate(0.5rem, 0.45rem)
+              }
+            }
+            .info-text {
+              width: 92%;
+              height: 7rem;
+              display: flex;
+              font-size: 1.3rem;
+              line-height: 1.6rem;
+              font-weight: 400;
+              color: #707070; 
+              align-items: center;
+              z-index: 1;
+              &::before {
+                content: '';
+                width: 7.7rem;
+                height: 1.2rem;
+                display: flex;
+                background-color: #DDAB40;
+                position: absolute;
+                z-index: -1;
+                transform: translate(24.3rem, 0.5rem)
+              }
+            }
+            .button-box {
+              width: 100%;
+              height: 7rem;
+              display: flex;
+              align-items: center;
+
+              button {
+                width: 8rem;
+                height: 2.5rem;
+                background-color: #DDAB40;
+                border: none;
+                font-size: 1.2rem;
+                font-family: Lato;
+                border-radius: 0.8rem;
+                outline: none;
+                z-index: 1;
+                transition: 0.2s;
+
+                &:hover {
+                  transform: translate(0.38rem, 0.35rem);
+                  cursor: pointer;
+                }
+              }
+              &::before {
+                content: '';
+                width: 7.7rem;
+                height: 2.1rem;
+                border: 2px solid black;
+                border-radius: 0.8rem;
+                position: absolute;
+                z-index: 0;
+                transform: translate(0.45rem, 0.37rem)
+              }
+            }
+          }
         }
       }
 
@@ -105,15 +220,14 @@ export default {
         }
       }
     .info{
-      background-color: #1E000E;
       min-height: 100vh;
-      width: 100vw;
+      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
 
       .box{
-        width: 50vw;
+        width: 50rem;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
