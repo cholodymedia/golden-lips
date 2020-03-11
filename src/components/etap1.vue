@@ -50,7 +50,7 @@ export default {
             this.sending = true;
             axios({
                 method: 'post',
-                url: 'http://localhost:5000/addtopic',
+                url: 'https://golden-lips.herokuapp.com/addtopic',
                 data: {
                     topic: this.topic
                 }

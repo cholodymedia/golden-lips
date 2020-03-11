@@ -41,7 +41,7 @@ export default {
       this.loading = true;
       axios({
         method: 'post',
-        url: 'http://192.168.1.37:5000/vote',
+        url: 'https://golden-lips.herokuapp.com/vote',
         data: {
           "id": id
         }
@@ -57,7 +57,7 @@ export default {
   created() {
     axios({
       method: 'post',
-      url: 'http://192.168.1.37:5000/votelist'
+      url: 'https://golden-lips.herokuapp.com/votelist'
     }).then(response => {
       this.array = response.data.votes;
     });

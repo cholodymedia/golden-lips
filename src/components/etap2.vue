@@ -80,7 +80,7 @@ export default {
         "Content-Type": "application/x-www-form-urlencoded",
         Accept: "application/json"
       },
-      url: 'http://192.168.1.37:5000/listselected'
+      url: 'https://golden-lips.herokuapp.com/listselected'
     }).then(data => {
       this.topics = data.data.selected
     }).catch(err => {
@@ -94,7 +94,7 @@ export default {
         this.sending = true;
         axios({
           method: 'post',
-          url: 'http://192.168.1.37:5000/application',
+          url: 'https://golden-lips.herokuapp.com/application',
           data: {
               temat: this.temat,
               imie: this.imie,
