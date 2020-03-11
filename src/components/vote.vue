@@ -1,7 +1,7 @@
 <template>
   <div class="box">
     <div class="class">{{ votes }}</div>
-    <div class="name">{{ name }}</div>
+    <div class="name">{{ name.split(" ")[0] }}<br>{{ name.split(" ")[1] }}</div>
     <div class="button-box">
       <div class="button" @click="clickButton">Głosuj</div>
     </div>
@@ -27,7 +27,7 @@ export default {
 .box {
   width: 16rem;
   height: 12rem;
-  background-color: rgb(235, 181, 33);
+  background-color: #1E000E;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -41,20 +41,21 @@ export default {
     position: absolute;
     right: 1rem;
     top: 1rem;
-    color: #2c2c2c;
+    color: white;
     font-weight: 700;
   }
   .name {
     flex: 5;
-    // background-color: red;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 2rem;
-    color: #2c2c2c;
+    color: white;
     font-weight: 700;
     transform: translateY(2rem);
     transition: 0.3s;
+    line-height: 2.8rem;
+    margin-left: -1.5rem;
   }
   .button-box {
     flex: 3;
@@ -67,7 +68,7 @@ export default {
     .button {
       width: 8rem;
       height: 2.5rem;
-      background-color: #2c2c2c;
+      background-color: white;
       border-radius: 2rem;
       display: flex;
       justify-content: center;

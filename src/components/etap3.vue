@@ -1,13 +1,14 @@
 <template>
-  <div class="container">
+  <div class="container" v-bind:class="{ hide: hideBox }">
+    <div class="title" v-if="!sendSucced && !loading && !error">Weź udział w głosowaniu!</div>
     <div class="row" v-if="!sendSucced && !loading && !error">
-      <vote @clicked="clicked" v-for="item in array" :key="item._id" :name="item.presentation" :id="item._id" :votes="item.votes"/>
+      <vote class="vote" @clicked="clicked" v-for="item in array" :key="item._id" :name="item.name" :id="item._id" :votes="item.counter"/>
     </div>
     <div class="send" v-if="sendSucced && !error">
       Dziękujemy za oddanie głosu!
     </div>
     <div class="send" v-if="error">
-      Głos z tego adresu już został policzony
+      Głos z tego adresu już został policzony!!!
     </div>
     <div class="send" v-if="loading">
       <Loading/>
@@ -30,7 +31,7 @@ export default {
   data() {
     return {
       sendSucced: false,
-      error: false,
+      error: '',
       loading: false,
       array: []
     }
@@ -40,9 +41,9 @@ export default {
       this.loading = true;
       axios({
         method: 'post',
-        url: 'http://localhost:5000/presentation/vote',
+        url: 'http://192.168.1.37:5000/vote',
         data: {
-          "_id": id
+          "id": id
         }
       }).then(() => {
         this.loading = false;
@@ -56,42 +57,104 @@ export default {
   created() {
     axios({
       method: 'post',
-      url: 'http://localhost:5000/presentation/all'
+      url: 'http://192.168.1.37:5000/votelist'
     }).then(response => {
-      this.array = response.data.presentations;
+      this.array = response.data.votes;
     });
+  },
+  computed: {
+    hideBox() {
+      if(this.sendSucced || this.error) {
+          return true;
+      }
+      return false;
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .container {
-  background-color: #1E000E;
-  color: #ddab40;
+  background-color: #DDAB40;
+  color: #1E000E;
   font-family: Lato;
   width: 100%;
-  height: auto;
+  height: 25rem;
   display: flex;
   flex-direction: column;
   padding-bottom: 4rem;
   align-items: center;
+  justify-content: center;
+  @media (max-width: 768px) {
+    height: auto;
+  }
+
+  .title {
+    width: 60rem;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    font-weight: 700;
+    @media (max-width: 768px) {
+      width: 100%;
+      font-size: 1.6rem;
+      margin-top: 2rem;
+    }
+  }
 
   .row {
-    width: 70vw;
+    width: 60rem;
     height: auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto;
     grid-row-gap: 2.7rem;
+    @media (max-width: 768px) {
+      width: 100%;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+    }
+
+    .vote {
+      place-self: center;
+    }
   }
 
   .send {
-    width: 70vw;
+    width: 60rem;
     height: 29rem;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 3rem;
+    @media (max-width: 768px) {
+      width: 90%;
+      font-size: 2rem;
+      line-height: 3rem;
+    }
   }
 }
+
+.hide {
+    animation: hide 4s forwards;
+}
+
+@keyframes hide {
+    0% {
+        height: 25rem;
+    }
+    90% {
+        height: 25rem;
+        opacity: 1;
+    }
+    100% {
+        height: 0rem;
+        visibility: hidden;
+        opacity: 0;
+    }
+}
+
 </style>

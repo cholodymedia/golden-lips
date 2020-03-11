@@ -4,15 +4,15 @@
       <div class="left">
         <div class="box">
           <div class="top">
-            <div class="link">Wiśniowa</div>
-            <div class="link">Kontakt</div>
+            <div class="link" @click="school">Wiśniowa</div>
+            <!-- <div class="link">Kontakt</div> -->
           </div>
           <div class="middle">
             <div class="title">ZŁOTE USTA</div>
             <div class="subtitle">KONKURS RECYTATORSKI NA WIŚNIOWEJ</div>
             <div class="info-text">BILIOTEKA SZKOLNA ZACHĘCA DO WZIĘCIA UDZIAŁU W IGRZYSKACH NA MIKOROFONY, GDZIE ZWYCIEZCA MOŻE BYĆ TYLKO JEDEN.</div>
             <div class="button-box">
-              <button>więcej</button>
+              <button @click="scroll">więcej</button>
             </div>
           </div>
         </div>
@@ -48,6 +48,14 @@ export default {
     return {
       image: image
     }
+  },
+  methods: {
+    school() {
+      window.open("https://tm1.edu.pl");
+    },
+    scroll() {
+      document.getElementsByClassName("info")[0].scrollIntoView();
+    }
   }
 }
 </script>
@@ -68,6 +76,10 @@ export default {
       background-color: white;
       z-index: 1;
 
+      @media (max-width: 768px) {
+        flex-direction: column-reverse;
+      }
+
       .left {
         flex: 3.5;
         display: flex;
@@ -75,17 +87,30 @@ export default {
         align-items: center;
         justify-content: center;
 
+        @media (max-width: 768px) {
+          height: 70vh;
+          width: 100%;
+        }
+
         .box {
           width: 38rem;
           height: 85%;
           display: flex;
           flex-direction: column;
 
+          @media (max-width: 768px) {
+            width: 100%;
+            height: 100%;
+          }
+
           .top {
             width: 100%;
             height: 4rem;
             display: flex;
             flex-direction: row;
+            @media (max-width: 768px) {
+              display: none !important;
+            }
 
             .link {
               width: 12rem;
@@ -95,6 +120,29 @@ export default {
               color: black;
               font-weight: 200;
               font-size: 1.4rem;
+              transition: 0.2s;
+              &::before {
+                content: '';
+                width: 0rem;
+                height: 1.2rem;
+                background-color: #DDAB40;
+                position: absolute;
+                z-index: -1;
+                transform: translate(0.1rem, 0.5rem);
+                transition: 0.2s;
+              }
+              &:hover {
+                cursor: pointer;
+                &::before {
+                  content: '';
+                  width: 7rem;
+                  height: 1.2rem;
+                  background-color: #DDAB40;
+                  position: absolute;
+                  z-index: -1;
+                  transform: translate(0.1rem, 0.5rem)
+                }
+              }
             }
           }
 
@@ -103,7 +151,7 @@ export default {
             height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            align-items: center;
 
             .title {
               width: 100%;
@@ -111,6 +159,13 @@ export default {
               font-size: 5rem;
               font-weight: 900;
               color: #1E000E;
+              @media (max-width: 768px) {
+                font-size: 2rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 4rem;
+              }
             }
             .subtitle {
               width: 100%;
@@ -121,6 +176,11 @@ export default {
               color: black; 
               align-items: center;
               z-index: 1;
+              @media (max-width: 768px) {
+                width: 80%;
+                text-align: center;
+                height: 6rem;
+              }
               &::before {
                 content: '';
                 width: 7.7rem;
@@ -128,7 +188,10 @@ export default {
                 background-color: #DDAB40;
                 position: absolute;
                 z-index: -1;
-                transform: translate(0.5rem, 0.45rem)
+                transform: translate(0.5rem, 0.45rem);
+                @media (max-width: 768px) {
+                  display: none !important;
+                }
               }
             }
             .info-text {
@@ -141,6 +204,12 @@ export default {
               color: #707070; 
               align-items: center;
               z-index: 1;
+              @media (max-width: 768px) {
+                width: 80%;
+                height: 7rem;
+                font-size: 1rem;
+                text-align: justify;
+              }
               &::before {
                 content: '';
                 width: 7.7rem;
@@ -149,7 +218,10 @@ export default {
                 background-color: #DDAB40;
                 position: absolute;
                 z-index: -1;
-                transform: translate(24.3rem, 0.5rem)
+                transform: translate(24.3rem, 0.5rem);
+                @media (max-width: 768px) {
+                  display: none !important;
+                }
               }
             }
             .button-box {
@@ -157,6 +229,9 @@ export default {
               height: 7rem;
               display: flex;
               align-items: center;
+              @media (max-width: 768px) {
+                justify-content: center;
+              }
 
               button {
                 width: 8rem;
@@ -183,7 +258,10 @@ export default {
                 border-radius: 0.8rem;
                 position: absolute;
                 z-index: 0;
-                transform: translate(0.45rem, 0.37rem)
+                transform: translate(0.45rem, 0.37rem);
+                @media (max-width: 768px) {
+                  display: none !important;
+                }
               }
             }
           }
@@ -195,9 +273,18 @@ export default {
         display: flex;
         justify-content: flex-start;
         align-items: center;
+        @media (max-width: 768px) {
+          height: 30vh;
+          width: 100%;
+          justify-content: center;
+          align-items: center;
+        }
 
         img {
           width: 28rem;
+          @media (max-width: 768px) {
+            width: 7rem;
+          }
         }
       }
       
@@ -232,6 +319,10 @@ export default {
         flex-direction: column;
         align-items: flex-start;
         padding-bottom: 9vh;
+        @media (max-width: 768px) {
+          align-items: center;
+          width: 100%;
+        }
       }
     }
   }

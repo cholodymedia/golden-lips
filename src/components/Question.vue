@@ -22,6 +22,9 @@ export default {
   }
   .question {
     width: 90%;
+    @media (max-width: 768px) {
+      width: 85%;
+    }
   }
   .question_title {
     text-transform: uppercase;
@@ -30,6 +33,9 @@ export default {
     padding-top: 9vh;
     font-weight: 900;
     z-index: 1;
+    @media (max-width: 768px) {
+      font-size: 1.7rem;
+    }
 
     &::before {
       content: '';
@@ -38,7 +44,11 @@ export default {
       background-color: #DDAB40;
       position: absolute;
       z-index: -1;
-      transform: translate(0rem, -1rem)
+      transform: translate(0rem, -1.3rem);
+      @media (max-width: 768px) {
+        width: 19rem;
+        height: 4rem;
+      }
     }
   }
   .question_text {
